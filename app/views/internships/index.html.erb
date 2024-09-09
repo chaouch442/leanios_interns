@@ -1,0 +1,9 @@
+<h1>Liste des Stages</h1>
+<ul>
+  <% @internships.each do |internship| %>
+    <li>
+      <%= link_to internship.title, internship_path(internship) %> 
+      <%= link_to 'Voir les Documents', internship_to_documents_path(internship) %>
+    </li>
+  <% end %>
+</ul>

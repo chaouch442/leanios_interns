@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails du Stagiaire</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto px-4 py-8">
+    <!-- Titre -->
+    <h1 class="text-3xl font-bold mb-6">Détails du Stagiaire</h1>
+
+    <!-- Détails du stagiaire -->
+    <div class="mb-6 p-6 border border-gray-300 rounded-lg shadow-md bg-white">
+      <p class="mb-4">
+        <strong class="font-semibold">Nom:</strong>
+        <%= @stagiaire.last_name %>
+      </p>
+
+      <p class="mb-4">
+        <strong class="font-semibold">Prénom:</strong>
+        <%= @stagiaire.first_name %>
+      </p>
+
+      <p class="mb-4">
+        <strong class="font-semibold">CIN:</strong>
+        <%= @stagiaire.cin %>
+      </p>
+
+      <p class="mb-4">
+        <strong class="font-semibold">Date de naissance:</strong>
+        <%= @stagiaire.birthdate.strftime('%d %B %Y') %>
+      </p>
+
+      <p class="mb-4">
+        <strong class="font-semibold">Numéro de téléphone:</strong>
+        <%= @stagiaire.phone_number %>
+      </p>
+    </div>
+
+    <div class="flex justify-between mb-4">
+      <div class="flex space-x-4">
+        <%= link_to 'Ajouter un stage', new_stagiaire_internship_path(@stagiaire), class: 'px-4 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50' %>
+        <%= link_to 'Supprimer', stagiaire_path(@stagiaire), method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50' %>
+        <%= link_to 'Modifier', edit_stagiaire_path(@stagiaire), class: 'px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50' %>
+        <%= link_to 'Retour à la liste', stagiaires_path, class: 'px-4 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50' %>
+      </div>
+    </div>
+
+    
+
+    <h2 class="text-2xl font-semibold mb-6">Stages</h2>
+    <ul class="list-disc pl-6 mb-6">
+      <% @stagiaire.internships.each do |internship| %>
+        <li class="mb-4">
+          <strong class="font-semibold">Spécialité:</strong> <%= internship.specialty %> |
+          <strong class="font-semibold">Projet:</strong> <%= internship.project %> |
+          <strong class="font-semibold">Début:</strong> <%= internship.start_date.strftime('%d %B %Y') %> |
+          <strong class="font-semibold">Fin:</strong> <%= internship.end_date.strftime('%d %B %Y') %>
+          <div class="mt-2">
+            <%= link_to 'Supprimer', stagiaire_internship_path(@stagiaire, internship), method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'px-4 py-2 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50' %>
+          </div>
+        </li>
+        <% if @stagiaire.internships.any? %>
+      <div class="mb-6">
+        <%= link_to 'Ajouter un Document', new_stagiaire_internship_to_document_path(@stagiaire, @stagiaire.internships.first), class: 'px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50' %>
+      </div>
+    <% else %>
+      <p>Aucun stage disponible pour ajouter un document.</p>
+    <% end %>
+    
+      <% end %>
+    </ul>
+  </div>
+</body>
+</html>

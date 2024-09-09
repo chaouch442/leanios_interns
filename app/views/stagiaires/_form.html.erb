@@ -1,0 +1,46 @@
+<%= form_with model: @stagiaire, local: true do |form| %>
+  <% if @stagiaire.errors.any? %>
+    <div id="error_explanation" class="mb-6 p-4 bg-red-100 border border-red-300 rounded-lg">
+      <h2 class="text-red-600 font-semibold text-lg mb-2"><%= pluralize(@stagiaire.errors.count, "erreur") %> empêchent l'enregistrement :</h2>
+      <ul class="list-disc pl-5">
+        <% @stagiaire.errors.full_messages.each do |message| %>
+          <li class="text-red-600"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-6">
+    <%= form.label :last_name, "Nom", class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.text_field :last_name, class: "form-input w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.label :first_name, "Prénom", class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.text_field :first_name, class: "form-input w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.label :cin, "CIN", class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.text_field :cin, class: "form-input w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.label :birthdate, "Date de naissance", class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.date_select :birthdate, class: "form-input w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.label :phone_number, "Numéro de téléphone", class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.text_field :phone_number, class: "form-input w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.label :status, "Statut", class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.select :status, options_for_select([['En Cours', 'en_cours'], ['Terminé', 'termine']], @stagiaire.status), class: "form-select w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+
+  <div class="flex items-center justify-end">
+    <%= form.submit 'Enregistrer', class: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+<% end %>

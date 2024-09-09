@@ -1,0 +1,23 @@
+<section class="bg-gray-100 py-8">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Documents en Cours</h2>
+    
+    <%= link_to 'Ajouter un Document', new_stagiaire_internship_to_document_path(@internship.stagiaire, @internship), class: 'bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300 mb-4 inline-block' %>
+
+    <div class="bg-white shadow-md rounded-lg p-4">
+      <% @to_documents.each do |to_document| %>
+        <div class="border-b border-gray-200 py-2">
+          <h3 class="text-lg font-semibold">
+          <%= link_to to_document.name, stagiaire_internship_to_document_path(@internship.stagiaire, @internship, to_document) %>
+
+          </h3>
+          <p><%= to_document.description %></p>
+          
+          <%= link_to 'Archiver', archive_stagiaire_internship_to_document_path(@internship.stagiaire, @internship, to_document), method: :patch, data: { confirm: 'Êtes-vous sûr de vouloir archiver ce document ?' }, class: 'bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition duration-300' %>
+          <%= link_to 'Modifier', edit_stagiaire_internship_to_document_path(@internship.stagiaire, @internship, to_document), class: 'bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300' %>
+           <%= link_to 'Supprimer', stagiaire_internship_to_document_path(@internship.stagiaire, @internship, to_document), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce document ?' }, class: 'bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,2 @@
+module StagiairesHelper
+end

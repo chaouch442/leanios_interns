@@ -1,0 +1,21 @@
+
+
+<h1><%= @to_document.name %></h1>
+
+<%= form_with(model: @to_document, local: true) do |form| %>
+  <div class="mb-4">
+    <%= form.label :name, 'Nom du Document' %>
+    <%= form.text_field :name, class: 'form-input' %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :file, 'Fichier' %>
+    <%= form.file_field :file, class: 'form-input' %>
+  </div>
+  
+
+ <%= link_to 'Archiver', archive_stagiaire_internship_to_document_path(@internship.stagiaire, @internship, @to_document), method: :patch, class: 'btn btn-warning' %>
+
+  <%= link_to 'Modifier', edit_stagiaire_internship_to_document_path(@internship.stagiaire, @internship, @to_document), class: 'btn btn-primary' %>
+  <%= link_to 'Retour', stagiaire_internship_to_documents_path(@internship.stagiaire, @internship), class: 'btn btn-secondary' %>
+<% end %>

@@ -1,0 +1,38 @@
+<%= form_with model: [@stagiaire, @internship], local: true do |form| %>
+  <% if @internship.errors.any? %>
+    <div id="error_explanation" class="mb-6 p-4 bg-red-100 border border-red-300 rounded-lg">
+      <h2 class="text-red-600 font-semibold text-lg mb-2"><%= pluralize(@internship.errors.count, "erreur") %> empêchent l'enregistrement :</h2>
+      <ul class="list-disc list-inside text-red-600">
+        <% @internship.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+ <div class="mb-6">
+  <%= form.label :specialty, "Spécialité", class: "block text-gray-700 font-medium mb-2" %>
+  <%= form.text_field :specialty, class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+</div>
+
+
+  <div class="mb-6">
+    <%= form.label :project, "Projet", class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.text_field :project, class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+   <div class="mb-6">
+    <%= form.label :start_date, "Date de début", class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.date_select :start_date, class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.label :end_date, "Date de fin", class: "block text-gray-700 font-medium mb-2" %>
+    <%= form.date_select :end_date, class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+
+
+  <div class="flex justify-end">
+    <%= form.submit "Enregistrer", class: "bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" %>
+  </div>
+<% end %>

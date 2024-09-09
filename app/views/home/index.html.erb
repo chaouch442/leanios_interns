@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre Titre</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^3.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  
+ <nav class="bg-blue-800 p-4 absolute top-0 right-0 left-0 z-10">
+  <ul class="flex justify-center space-x-6">
+    <% if user_signed_in? %>
+      <li><%= link_to 'Accueil', root_path, class: "text-white hover:text-gray-300" %></li>
+      <%= form_for :destroy_user_session, url: destroy_user_session_path, method: :delete, html: { class: 'inline' } do %>
+        <%= submit_tag 'Déconnexion', class: "text-gray-300 hover:text-red-400 bg-transparent border-0 cursor-pointer" %>
+      <% end %>
+    <% else %>
+      <li><%= link_to 'Connexion', new_user_session_path, class: "text-gray-300 hover:text-gray-400", aria: { label: "Connexion" } %></li>
+      <li><%= link_to 'Inscription', new_user_registration_path, class: "text-gray-300 hover:text-gray-400", aria: { label: "Créer un compte" } %></li>
+    <% end %>
+  </ul>
+</nav>
+
+<div class="bg-cover bg-center h-screen" style="background-image: url('l1.jpg');">
+  <div class="flex items-center justify-center h-full bg-gray-900 bg-opacity-50">
+    <div class="sm:text-center lg:text-left p-10">
+      <h1 class="text-2xl tracking-tight font-extrabold text-gray-900 sm:text-xl md:text-4xl">
+        <span class="block text-blue-900 xl:inline">GPAO / MES</span>
+        <br>
+        <span class="block xl:inline uppercase">Votre Solution pour la Gestion des Stages</span>
+      </h1>
+      <p class="mt-1 text-base text-black-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+        Gérez vos stages efficacement avec notre plateforme intuitive. Suivez les informations sur les stagiaires, les projets et optimisez vos processus en toute simplicité.
+      </p>
+      <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+      </div>
+    </div>
+    <div class="lg:inset-y-0 lg:right-0 lg:w-1/2 h-screen">
+      <%= video_tag 'https://www.leanios.com/assets/frontend/hero-da0458736a14775463378f12b4a43b5daf919ac9fd81b85b0b44a81e92ecd6d6.mp4', autoplay: :autoplay, loop: :loop, muted: :muted, class: "h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full", id: "hero-video" %>
+    </div>  
+  </div>
+</div>
+
+<section class="text-center py-12">
+  <h2 class="text-3xl font-bold text-gray-800">Gérez facilement vos stages et stagiaires</h2>
+  <p class="mt-4 text-lg text-gray-600">Centralisez les informations sur les stagiaires, suivez les projets et gérez les stages en toute simplicité.</p>
+</section>
+<section class="bg-white py-12">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h3 class="text-2xl font-bold text-gray-800">Présentation de la Plateforme</h3>
+    <p class="mt-4 text-gray-600">Notre plateforme vous permet de gérer facilement vos stagiaires, suivre les stages et gérer les projets associés.</p>
+  </div>
+</section>
+<section class="bg-gray-100 py-12">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h3 class="text-2xl font-bold text-gray-800">Pourquoi choisir notre plateforme ?</h3>
+    <ul class="mt-4 space-y-2 text-gray-600">
+      <li>✔️ Simplicité d'utilisation</li>
+      <li>✔️ Efficacité dans la gestion des données</li>
+      <li>✔️ Gain de temps considérable</li>
+    </ul>
+  </div>
+</section>
+<section class="bg-gray-50 py-12">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h3 class="text-2xl font-bold text-gray-900">Gérer les Stagiaires</h3>
+    <% if user_signed_in? %>
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <h4 class="text-lg font-semibold text-gray-800 mb-3">Voir les Stagiaires</h4>
+          <p class="text-gray-600 mb-4">Parcourez la liste complète des stagiaires et leurs détails.</p>
+          <%= link_to 'Voir', stagiaires_path, class: 'inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300' %>
+        </div>
+        
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <h4 class="text-lg font-semibold text-gray-800 mb-3">Ajouter un Stagiaire</h4>
+          <p class="text-gray-600 mb-4">Ajoutez rapidement un nouveau stagiaire avec toutes ses informations.</p>
+          <%= link_to 'Ajouter', new_stagiaire_path, class: 'inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300' %>
+        </div>
+        
+       
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <h4 class="text-lg font-semibold text-gray-800 mb-3">Aperçu des Stagiaires</h4>
+          <p class="text-gray-600 mb-4">Un aperçu rapide des stagiaires en cours et terminés.</p>
+<%= link_to 'Stagiaires en Cours', en_cours_stagiaires_path, class: 'inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300' %>
+  <%= link_to 'Stagiaires Terminé', termines_stagiaires_path, class: 'inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300' %>        </div>
+      </div>
+    <% else %>
+      <p class="mt-6 text-gray-600">Veuillez vous connecter pour gérer les stagiaires.</p>
+    <% end %>
+  </div>
+</section>
+
+<section class="bg-gray-100 py-12">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h3 class="text-2xl font-bold text-gray-800">Témoignages</h3>
+    <blockquote class="mt-4 text-gray-600">"Cette plateforme a grandement simplifié la gestion de nos stages !"</blockquote>
+    <p class="text-gray-500 mt-2">- Utilisateur satisfait</p>
+  </div>
+</section>
+<section class="bg-white py-12">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h3 class="text-2xl font-bold text-gray-800">Actualités</h3>
+    <p class="mt-4 text-gray-600">Découvrez les nouvelles fonctionnalités ajoutées récemment.</p>
+    <ul class="mt-4 space-y-2 text-gray-600">
+      <li>🔔 Nouvelle fonctionnalité de gestion des projets</li>
+      <li>🔔 Amélioration de l'interface utilisateur</li>
+    </ul>
+  </div>
+</section>
+<footer class="bg-gray-900 text-white py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+     
+      <div>
+        <h4 class="text-lg font-bold mb-4">Contact</h4>
+        <p class="text-sm mb-2">Pour toute demande d'information ou de support, n'hésitez pas à nous contacter :</p>
+        <p class="text-sm"><a href="mailto:info@leanios.com" class="hover:text-gray-400 transition">Email: info@leanios.com</a></p>
+        <p class="text-sm"><a href="tel:+491729513138" class="hover:text-gray-400 transition">Téléphone: +49 172 9513138</a></p>
+        <p class="text-sm mt-4">Notre équipe est disponible du lundi au vendredi, de 8:30h à 17:30h.</p>
+      </div>
+
+   
+      <div>
+        <h4 class="text-lg font-bold mb-4">Services</h4>
+        <p class="text-sm mb-2">Nous offrons une gamme complète de services pour répondre à vos besoins :</p>
+        <ul>
+          <li class="mb-2">
+            <p class="font-semibold text-sm">Consultation</p>
+            <p class="text-sm text-gray-400">Obtenez des conseils d'experts pour vos projets technologiques.</p>
+          </li>
+          <li class="mb-2">
+            <p class="font-semibold text-sm">Développement</p>
+            <p class="text-sm text-gray-400">Solutions personnalisées pour le développement de votre entreprise.</p>
+          </li>
+          <li class="mb-2">
+            <p class="font-semibold text-sm">Support Technique</p>
+            <p class="text-sm text-gray-400">Assistance 24/7 pour garantir le bon fonctionnement de vos systèmes.</p>
+          </li>
+          <li class="mb-2">
+            <p class="font-semibold text-sm">Formation</p>
+            <p class="text-sm text-gray-400">Sessions de formation pour vous et votre équipe sur nos produits et services.</p>
+          </li>
+        </ul>
+      </div>
+
+      
+      <div>
+        <h4 class="text-lg font-bold mb-4">Suivez-nous</h4>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/leanios/" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-gray-400 transition">LinkedIn</a></li>
+
+          <li><a href="https://www.facebook.com/LeaniosMES?mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-gray-400 transition">facebook</a></li>
+          <li><a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2Fleanios.gmbh%3Figsh%3DMWlhdHZtYnpkem5pcw%253D%253D%26fbclid%3DIwZXh0bgNhZW0CMTAAAR3mcY5Bf4YWxtJfuwRHEDCic6JIIdfB4WQ_Q98V448w2mUYXjTQKVRshts_aem_8MXIp1a7I_FyRx3VGKZqLA&h=AT3T0eSDp7h_qQxQbr-OATxTB565k4I_-2mpM7lJlW-nRJL3VahvRznMKTGV0POjDF_yDP7IlwtGobNlTX4f7Pgng4yO91RBlj_03mTt4QyKsN90HtyQFrwtOfqBUw" target="_blank" rel="noopener noreferrer" class="text-sm hover:text-gray-400 transition">Instagram</a></li>
+        </ul>
+      </div>
+
+     
+      
+    
+    <div class="mt-8">
+      <h4 class="text-lg font-bold mb-4">Notre emplacement</h4>
+      <iframe src="https://www.google.com/maps/embed?pb=..." 
+              width="100%" 
+              height="200" 
+              class="border-0" 
+              allowfullscreen="" 
+              loading="lazy"></iframe>
+    </div>
+
+    
+   <div class="flex items-center justify-center mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+  <p>&copy; 2024 Leanios. Tous droits réservés.</p>
+</div>
+
+</footer>
+
+

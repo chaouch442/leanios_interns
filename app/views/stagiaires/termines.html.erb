@@ -1,0 +1,56 @@
+<nav class="bg-gray-800 p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <%= link_to 'Accueil', root_path, class: 'text-white font-bold py-2 px-4 rounded hover:bg-gray-700' %>
+    <div class="flex space-x-4">
+      <%= link_to 'Stagiaires en Cours', en_cours_stagiaires_path, class: 'text-white font-bold py-2 px-4 rounded hover:bg-green-700' %>
+      <%= link_to 'Stagiaires Terminés', termines_stagiaires_path, class: 'text-white font-bold py-2 px-4 rounded hover:bg-yellow-700' %>
+   <%= link_to 'Voir Tous les Stagiaires', stagiaires_path, class: 'hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' %>
+    </div>
+  </div>
+</nav>
+
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Stagiaires en Cours</h1>
+
+  <%= form_with url: en_cours_stagiaires_path, method: :get, local: true do %>
+    <div class="mb-4">
+      <%= label_tag :query, "Recherche", class: 'block text-gray-700 font-bold mb-2' %>
+      <%= text_field_tag :query, params[:query], class: 'form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <%= submit_tag 'Rechercher', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' %>
+  <% end %>
+
+  
+  <table class="table-auto w-full mt-6">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">ID</th>
+        <th class="px-4 py-2">Nom</th>
+        <th class="px-4 py-2">Prénom</th>
+        <th class="px-4 py-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @stagiaires.present? %>
+        <% @stagiaires.each do |stagiaire| %>
+          <tr>
+            <td class="py-2 px-4 border-b"><%= stagiaire.id %></td>
+            <td class="py-2 px-4 border-b"><%= stagiaire.last_name %></td>
+            <td class="py-2 px-4 border-b"><%= stagiaire.first_name %></td>
+            <td class="py-2 px-4 border-b">
+              <%= link_to 'Afficher', stagiaire_path(stagiaire), class: 'text-blue-600 hover:text-blue-900' %>
+              <%= link_to 'Éditer', edit_stagiaire_path(stagiaire), class: 'text-yellow-600 hover:text-yellow-900 ml-2' %>
+              <%= form_with(model: stagiaire, method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer ce stagiaire ?' }, class: 'inline') do |form| %>
+                <%= form.submit 'Supprimer', class: 'bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300' %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="4" class="px-4 py-2 text-center text-gray-500">Aucun stagiaire trouvé.</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

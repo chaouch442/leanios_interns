@@ -1,0 +1,43 @@
+
+var ftGUID_7936256="6072B79181B2D3";
+var ftConfID_7936256="0";
+var ftParams_7936256="ftx=&fty=&ftadz=&ftscw=&ft_custom=&ftOBA=1&ft_ifb=1&ft_domain=fr.pngtree.com&ft_agentEnv=0&ft_referrer=https%3A%2F%2Ffr.pngtree.com%2Felement%2Fdown&gdpr=0&gdpr_consent=&us_privacy=${US_PRIVACY}&bundle_id=&site_url=https://fr.pngtree.com/element/down&ft_partnerimpid=ABAjH0jbBOnEkz4xPoI3rk0PFbe-&pub_id=1&sup_platform=1&cachebuster=949601.015584188";
+var ftKeyword_7936256="";
+var ftCustom_7936256="";
+var ftSection_7936256="";
+var ftSegment_7936256="";
+var ftSegmentList_7936256=[];
+var ftRuleMatch_7936256="0";
+var ftTimestamp_7936256="1725456061";
+var ftGeoC2_7936256="tn";
+var ftGeoState_7936256="11";
+var ftGeoCity_7936256="berge du lac";
+var ftISP_7936256="ooredoo tunisia";
+var ftSpeed_7936256="mobile";
+var ftConnType_7936256="mobile";
+var ftDMA_7936256="-1";
+var ftLong_7936256="10.16";
+var ftLat_7936256="36.84";
+var ftPostal_7936256="1053";
+var ftTimeZone_7936256="+100";
+var ftMobileCarrier_7936256="ooredoo";
+var ftImp7936256 = {};
+ftImp7936256.privacy = "x";
+ftImp7936256.guidAge = "19";
+ftImp7936256.impID = "358D2C53-70B1-0634-27BB-8EDBF280BA01";
+ftImp7936256.duid = "FT:6072B79181B2D3";
+
+ftImp7936256.ft_tpplid = "";
+ftImp7936256.ft_c = {};
+ftImp7936256.gdpr = "0";
+ftImp7936256.gdpr_consent = "";
+ftImp7936256.gdpr_pd = "";
+ftImp7936256.oob_consent = "";
+ftImp7936256.gdprStoredConsent = "";
+ftImp7936256.us_privacy = "!!US_PRIVACY!";
+ftImp7936256.gpc = "";
+
+var ftCreativeId_7936256 = "4362980";
+document.write('<scr'+'ipt src="https://ajs-assets.ftstatic.com/ftUtils.js" id="ftscript_m7936256" name="ftscript_m7936256"></scr'+'ipt>');window.fTChecker=window.fTChecker||function(id){if(!id)return false;id=""+id;if(window.hasOwnProperty("ftUtils")){window["ft"+id]=Object.assign({},window.ftUtils.common);window["ft"+id].getBannerConfig(id)}else(function(id){window.setTimeout(function(){window.fTChecker(id)},50)})(id)};window.fTChecker("7936256");
+
+

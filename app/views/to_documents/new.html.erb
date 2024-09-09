@@ -1,0 +1,17 @@
+<h1 class="text-3xl font-bold mb-6 text-gray-800">Ajouter un Document</h1>
+
+<%= form_with(model: @to_document, url: stagiaire_internship_to_documents_path(@stagiaire, @internship), local: true, html: { class: 'space-y-6' }) do |form| %>
+  <div>
+    <%= form.label :name, 'Nom du Document', class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.text_field :name, class: 'mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
+  </div>
+
+  <div>
+    <%= form.label :file, 'Fichier', class: 'block text-sm font-medium text-gray-700' %>
+    <%= form.file_field :file, class: 'mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' %>
+  </div>
+
+  <div>
+    <%= form.submit 'Ajouter', class: 'w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-700 transition ease-in-out duration-300' %>
+  </div>
+<% end %>
